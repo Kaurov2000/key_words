@@ -40,11 +40,8 @@ else:
     stopwordsdict = stopwordsdictfile.read()
     stopwordsdictfile.close()
     stopwordsdict = regex.sub('\s', ",", stopwordsdict)  # заменяю пробельные символы запятыми
-    print(stopwordsdict)
     stopwordsdict = regex.sub('[^А-Яа-яA-Za-z,]', "", stopwordsdict)  # удаляю все символы, кроме букв и запятых
-    print(stopwordsdict)
     stopwords = stopwordsdict.split(',')
-    print(stopwords)
 
 # выбор файла с текстом
 
@@ -67,6 +64,7 @@ else:
     text = regex.sub(' [А-Яа-я]+-нибудь ', ' ', text)
     text = regex.sub('-ка ', ' ', text)
     text = regex.sub('-таки ', ' ', text)
+    text = regex.sub(' http[A-Za-z]+ ', " ", text)
     raw_words = text.split(' ')
 
     words = []
